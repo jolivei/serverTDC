@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../angulatTDC"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../proyectos_go/go"
+		},
+		{
+			"path": "../createpdf"
+		},
+		{
+			"path": "../serverGoRPI"
+		},
+		{
+			"path": "../qrclient"
+		}
+	]
+}

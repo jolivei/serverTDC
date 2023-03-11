@@ -1,0 +1,42 @@
+{
+  "name": "prueba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@getvim/execute": "^1.0.0",
+    "bcrypt": "^5.0.1",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "firebase-admin": "^10.0.2",
+    "internet-available": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "nanoid": "^2.1.11",
+    "node-cron": "^2.0.3",
+    "node-fetch": "^2.6.7",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "pg-promise": "^10.11.1",
+    "rxjs": "^7.5.4",
+    "uniqid": "^5.4.0",
+    "web-push": "^3.4.5"
+  },
+  "engines": {
+    "node": "v14.17.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

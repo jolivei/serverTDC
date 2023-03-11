@@ -1,0 +1,32 @@
+version: "3"
+######## crea contenedor  directamente sin una imagen de Dockefile
+services:
+  app:
+    image: node:14.21.0-alpine
+    container_name: node_server_tdc
+    #command: sh -c "apk add --update postgresql-client --no-install-recommends"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /home/pi/Desktop/serverTDC/docker/backupPost:/app/docker/backupPost
+    working_dir: /app
+    restart: unless-stopped
+    
+    environment:
+      NODE_ENV: production
+    command: sh -c "apk add --update postgresql-client && npm start"
+
+##############crea  contededor con una imagen construida con un docker file con node 14.21.0 alpine que copia codigo de node a la imagen instalando el cliente de postgres
+#version: "3"
+#services:
+#  web:
+#    build: .
+#    container_name: node_server_tdc_def
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - .:/app
+#      - /home/pi/Desktop/serverTDC/docker/backupPost:/app/docker/backupPost
+#    restart: unless-stopped
+

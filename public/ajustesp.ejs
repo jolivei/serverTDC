@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes TabernaDCalzada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <%- include ("./nav.ejs") %>
+        <div class="container">
+            <div class="row">
+                <!-- <div id="botonalta" class=" mt-1 text-end">
+                    <div class="row">
+                        <form class="mt-2" action="/logout" method="post">
+                            <button class="btn btn-dark" type="submit">Logout</button>
+                        </form>
+                    </div>
+
+
+                </div> -->
+                <h4 class=" mt-4 text-center">
+                    Cambiar ajustes
+                </h4>
+
+                <input type="hidden" id="idajustes" value="<%=ajustes.idusuariofs%>">
+                <div class="col-12 col-sm-6">
+                    <h5 class=" mt-2 text-center"> Datos de la administrador</h5>
+                    <form id="datosadminform">
+                        <div class="form-group">
+                            <label for="">Establecimiento</label>
+                            <input id="establecimiento" type="text" value="<%=ajustes.estableciniento%>"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Titular</label>
+                            <input type="text" id="titular" value="<%=ajustes.local%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Direccion</label>
+                            <input type="text" id="direccion" value="<%=ajustes.direccion%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Localidad</label>
+                            <input type="text" id="localidad" class="form-control" value="<%=ajustes.ciudad%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">NIF</label>
+                            <input type="text" id="nif" value="<%=ajustes.niflocal%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nueva contraseña administrador</label>
+                            <input type="password" id="newpass" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Repite contraseña administrador</label>
+                            <input type="password" id="reppass" class="form-control">
+                        </div>
+                        <div class="form-group py-2 d-flex justify-content-around">
+                            <input type="button" id="editad" value="Editar" class="btn btn-dark">
+                            <button class="btn btn-dark" id="savead" type="submit">Guardar</button>
+                        </div>
+
+                        <div class="form-group py-2">
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h5 class=" mt-2 text-center"> Servers y Backups</h5>
+
+                    <div class="form-group">
+                        <label for="web1">Server1: Activo red</label>
+                        <input id="web1" class="form-control" name="server1" type="text" value="<%=ajustes.server1%>"
+                            placeholder="Server1">
+                        <div class="d-flex mt-2 justify-content-around">
+                            <input id="editS1" type="button" value="Editar" class="btn btn-dark">
+                            <button id="testS1" class="btn btn-dark">
+                                Test connection
+                            </button>
+                            <div id="spinner1" class="spinner-border" role="status">
+
+                            </div>
+                            <button id="saveS1" class="btn btn-dark">
+                                Guardar
+                            </button>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group mt-2 ">
+                        <label for="web2">Server2 (para PG Historicas)</label>
+                        <input id="web2" class="form-control" name="server2" type="text" value="<%=ajustes.server2%>"
+                            placeholder="Server2">
+                        <div class="d-flex mt-2 justify-content-around">
+                            <input id="editS2" type="button" value="Editar" class="btn btn-dark">
+                            <button id="testS2" class="btn btn-dark">
+                                Test connection
+                            </button>
+                            <div id="spinner2" class="spinner-border" role="status">
+
+                            </div>
+                            <button id="saveS2" class="btn btn-dark">
+                                Guardar
+                            </button>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group mt-2 ">
+                        <label for="web3">Server3 (para Backup Remoto)</label>
+                        <input id="web3" class="form-control" name="server3" type="text" value="<%=ajustes.server3%>"
+                            placeholder="Server3">
+                        <div class="d-flex mt-2 justify-content-around">
+                            <input id="editS3" type="button" value="Editar" class="btn btn-dark">
+                            <button id="testS3" class="btn btn-dark">
+                                Test connection
+                            </button>
+                            <div id="spinner3" class="spinner-border" role="status">
+
+                            </div>
+                            <button id="saveS3" class="btn btn-dark">
+                                Guardar
+                            </button>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-9 mt-2 ">
+                        <input id="todoValue" style="display: none" value="<%=ajustes.todo%>" type="text">
+                        <% if (ajustes.todo ) { %>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input class="form-control" value="SE FACTURA  TODO">
+                                </div>
+                                <div class="col-6">
+                                    <button id="todoClick" class="btn btn-dark">
+                                        Cambiar a solo Visa
+                                    </button>
+                                </div>
+                            </div>
+                            <%} else { %>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input class="form-control" value="SOLO VISA">
+                                    </div>
+                                    <div class="col-6">
+                                        <button id="todoClick" class="btn btn-dark">
+                                            Cambiar a todo
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <% } %>
+                    </div>
+
+                    <div class="col-9 mt-2 ">
+                        <% if (ajustes.solad ) { %>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input class="form-control" value="SOLO VE administrador">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" style="display:none" id="soladvalue" value="<%=ajustes.solad%>">
+                                    <button id="soladClick" class="solad btn btn-dark">
+                                        Cambiar para VER TODOS
+                                    </button>
+                                </div>
+                            </div>
+                            <%} else { %>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input class="form-control" value="TODOS VEN TODO">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" style="display:none" id="soladvalue"
+                                            value="<%=ajustes.solad%>">
+                                        <button id="soladClick" class="solad btn btn-dark">
+                                            Cambiar para VER SOLO administrador
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <% } %>
+                    </div>
+                    <div class="col-9 mt-2 ">
+                        <% if (ajustes.elegir==1 ) { %>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input class="form-control" value="SOLO SE VE FACTURADO">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" style="display:none" id="elegirvalue" value="<%=ajustes.elegir%>">
+                                    <button id="verTodoClick" class="solad btn btn-dark">
+                                        Cambiar para VER TODOS
+                                    </button>
+                                </div>
+                            </div>
+                            <%} else { %>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input class="form-control" value="SE VEN TODAS  COMANDAS">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" style="display:none" id="elegirvalue"
+                                            value="<%=ajustes.elegir%>">
+                                        <button id="verTodoClick" class="solad btn btn-dark">
+                                            Cambiar para VER SOLO FACTURADO
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <% } %>
+                    </div>
+                    <div class="col-9 mt-2 ">
+                        <% if (ajustes.origen=='remoto' ) { %>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input class="form-control" value="Remoto">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" style="display:none" id="elegirOrigenvalue" value="<%=ajustes.origen%>">
+                                    <button id="verOrigenClick" class="solad btn btn-dark">
+                                        Cambiar a Local
+                                    </button>
+                                </div>
+                            </div>
+                            <%} else { %>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input class="form-control" value="Local">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" style="display:none" id="elegirOrigenvalue"
+                                            value="<%=ajustes.origen%>">
+                                        <button id="verOrigenClick" class="solad btn btn-dark">
+                                            Cambiar a Remoto
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <% } %>
+                    </div>
+                    <input style="display:none" id="cierre" type="text" value="<%=ajustes.horacierre%> ">
+                    <input style="display:none" id="bc" type="text" value="<%=ajustes.horabc%> ">
+
+
+                </div>
+
+
+                <div id="col" class="col-sm-8 col-md-6 col-lg-4 mx-auto text-center">
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+            <div class="row">
+                <h4>Horarios Cierres y Backups</h4>
+                <div class="col-12 col-sm-6 bg-light">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="">Hora cierre</label>
+                            <input id="horacierre" class="form-control" type="time" data-date-format="HH/MM">
+                        </div>
+                        <div class="col-4 mt-4 text-center">
+                            <input id="botonhoracierre" type="button" class="btn btn-dark" value="Editar">
+
+                        </div>
+                        <div class="col-4 mt-4 text-center">
+                            <input id="botonsavehoracierre" type="button" class="btn btn-dark" value="Guardar">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-12 col-sm-6  bg-light">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="">Hora Backup</label>
+                            <input id="horabc" class="form-control" type="time" data-date-format="HH/MM">
+                        </div>
+                        <div class="col-4 mt-4 text-center">
+                            <input id="botonhorabc" type="button" class="btn btn-dark" value="Editar">
+
+                        </div>
+                        <div class="col-4 mt-4 text-center">
+                            <input id="botonsavehorabc" type="button" class="btn btn-dark" value="Guardar">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <footer>
+                <h4>Ajustes</h4>
+            </footer>
+        </div>
+
+        <script type="module" src="ajustes.js"></script>
+        <!-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script> -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+        <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>-->
+</body>
+
+</html>

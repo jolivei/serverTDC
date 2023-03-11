@@ -1,0 +1,89 @@
+<div class="ticket">
+
+
+
+    <!--    <img src="./logo.png" alt="Logo">-->
+    <div class="centered">TABERNA DA CALZADA
+        <br style="font-weight: bold; text-align: left; align-content: left;">Carolina Vila Ribadomar
+
+    </div>
+    <!-- <div class="ml-5" style="font-weight: bold; text-align: left; align-content: left;">
+        <!-- <ngx-barcode  bc-height="30" bc-width="1" [bc-value]="comandaData?.idcomanda" [bc-display-value]="true"></ngx-barcode> 
+        QR :
+         <qr-code [value]="comandaData?.idcomanda" [size]="50"></qr-code> 
+
+    </div> -->
+
+    <div style="display: grid; grid-template-columns: 1.6fr 1fr;">
+        <div> <span style="font-weight: bold; text-align: left; align-content: left;">C/San Gregorio 1,bajo</span>
+            <br style="font-weight: bold; text-align: left; align-content: left;">36630, Cambados
+            <div style="font-weight: bold; text-align: left; align-content: left;">CIF: 76863770-R
+
+                <br style="font-size: 14px;">Mesa: {{comandaData?.mesa}}
+                <br style="font-size: 14px;">Le atendió: {{comandaData2?.nombrecamarero}}
+                <!--          <br> Dia: {{ahora|date: 'dd/MM/yy'}} Hora: {{ahora|date: 'HH:mm:ss'}}
+                <br> Factura simplificada: {{comandaData?.idcomanda}}
+ -->
+            </div>
+
+        </div>
+        <div style="margin-top:30px  ;text-align: center; align-content: center; ">
+
+            <qr-code [value]="comandaData?.idcomanda" [size]="50"></qr-code>
+        </div>
+
+    </div>
+    <div style="font-weight: bold; text-align: left; align-content: left;">CIF: 76863770-R
+
+        <br>Pago:{{pagoVisa }}
+        <br> Dia: {{ahora|date: 'dd/MM/yy'}} Hora: {{ahora|date: 'HH:mm'}}
+        <br> codigo: {{comandaData?.idcomanda}}
+        <br> Fact. simplificada: {{nfactsimpli}} <!--  A-{{ahora|date: 'yyyy'}}{{comandaData?.nfactsimpli}} -->
+    </div>
+    <!--  <div>C/ San Gregorio 1, bajo
+        <br style="font-weight: bold; text-align: left; align-content: left;">36630, Cambados
+
+    </div>
+    <div style="font-weight: bold; text-align: left; align-content: left;">CIF: 76863770-R
+
+        <br style="font-size: 14px;">Mesa: {{comandaData?.mesa}}
+        <br style="font-size: 14px;">Le atendió: {{comandaData2?.nombrecamarero}}
+        <br> Dia: {{ahora|date: 'dd/MM/yy'}} Hora: {{ahora|date: 'HH:mm:ss'}}
+        <br> Factura simplificada: {{comandaData?.idcomanda}}
+    </div>
+ -->
+
+    <table class="mt-3">
+        <thead>
+            <tr>
+                <th class="quantity">N.</th>
+                <th class="description">Articulos</th>
+                <th class="price">Precio</th>
+                <th class="price">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of datosTicket">
+                <td class="quantity">{{item.numero}}</td>
+                <td class="description"> {{item.nombre}} </td>
+                <td class="price"> {{item.precio|number : '1.2-2'}} </td>
+                <td class="price">{{item.subtotal|number : '1.2-2'}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <p style="text-align: center; font-size: 16px; font-weight: bold;" class="mt-2">Total Importe:
+        {{totalTicket|number:'1.2-2'}}</p>
+    <p *ngIf="entregado>0" style="text-align: center; font-size: 12px; font-weight: bold;" class="mt-2">Entrega:
+        {{entregado|number:'1.2-2'}}</p>
+    <p *ngIf="entregado>0" style="text-align: center; font-size: 12px; font-weight: bold;" class="mt-2">Cambio:
+        {{entregado-totalTicket|number:'1.2-2'}}</p>
+    <p style="text-align: center; font-size: 12px; font-weight: bold;" class="mt-2">Base imponible:
+        {{totalTicket/1.10|number : '1.2-2'}}</p>
+    <p style="text-align: center; font-size: 12px; font-weight: bold;">IVA 10%: {{totalTicket-(totalTicket/1.10)|number
+        : '1.2-2'}}</p>
+
+    <p class="centered">!GRACIAS POR SU VISITA!
+
+    </p>
+</div>
